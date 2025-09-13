@@ -46,6 +46,14 @@ export const signUp = async (req, res) => {
     res.status(201).json(newUser);
 }
 
+export const profile = async (req, res) => {
+    const {age, gender, weight, diabetesType, dibetesDuration, medications, activityLevel, mealPattern, healthConditions} = req.body;
+    if(!age || !gender || !weight || !diabetesType || !dibetesDuration || !activityLevel || !mealPattern){
+        return res.status(400).json({message:"Please fill the required fields"})
+    }
+    
+}
+
 export const signIn = async (req, res) =>{
     const {userName, password} = req.body;
     console.log(req.body)
