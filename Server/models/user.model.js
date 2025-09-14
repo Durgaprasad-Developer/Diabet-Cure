@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    userName:{
+    userName: {
         type: String,
         required: true,
         unique: true
@@ -13,37 +13,37 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true    
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
-    age:{
+    age: {
         type: Number,
     },
-    gender:{
+    gender: {
         type: String,
     },
-    weight:{
-        type: Number, 
-    },
-    diabetesType:{
-        type: String, 
-    },
-    dibetesDuration:{
+    weight: {
         type: Number,
     },
-    medications:{
+    diabetesType: {
         type: String,
     },
-    activityLevel:{
+    dibetesDuration: {
+        type: Number,
+    },
+    medications: {
         type: String,
     },
-    mealPattern:{
+    activityLevel: {
         type: String,
     },
-    healthConditions:{
+    mealPattern: {
+        type: String,
+    },
+    healthConditions: {
         type: String,
     }
 })

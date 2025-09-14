@@ -14,18 +14,17 @@ const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(cors());
-// app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
 
 // Authentication Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes)
-// Connect to Database
 
+// Connect to Database
 connectDB();
 
-app.get('/',(req, res)=>{
+app.get('/', (req, res) => {
     res.send("Server is running")
 })
 
