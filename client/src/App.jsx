@@ -16,6 +16,7 @@ function App() {
       <Route path="/landingpage" element={<Landingpage/>}/>
       <Route path="/forgot-password" element={<Forgotpassword/>}/>
       <Route path="/profile" element={<Profile/>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
     </Routes>
   )
 }

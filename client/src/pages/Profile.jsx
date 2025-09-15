@@ -2,10 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Mars, Venus, Pill, Utensils, Activity } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const [step, setStep] = useState(1);
   const containerRef = useRef(null);
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async()=>{
+    navigate("/dashboard")
+  }
 
   // Animate container on step change
   useEffect(() => {
@@ -269,7 +276,7 @@ function Profile() {
                   Back
                 </button>
                 <button
-                  onClick={() => alert("Profile Saved! 🎉")}
+                  onClick={handleSubmit}
                   className="px-6 py-2 rounded-full bg-blue-600 text-white shadow"
                 >
                   Done

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Mail, Lock } from "lucide-react"; // professional icon set
+import { signUp } from "../apicalls/authCalls";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -10,14 +11,24 @@ function Signup() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+    try{
     e.preventDefault();
-    // handle signup logic here\
-    navigate("/profile")
+    // handle signup logic here
+    
+    const data = await signUp({name, userName, email, password})
+    console.log("Server response", data)
     setName("");
     setUserName("");
     setEmail("");
     setPassword("");
+    if(data){
+    navigate("/profile")
+    }
+    }catch(err){
+      console.error("Error during Sign Up",err);
+      console.error("Server response", err.resoponse?.data)
+    }
   };
 
   return (
