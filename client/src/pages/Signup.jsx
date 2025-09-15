@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Mail, Lock } from "lucide-react"; // professional icon set
 
@@ -8,10 +8,12 @@ function Signup() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle signup logic here
+    // handle signup logic here\
+    navigate("/profile")
     setName("");
     setUserName("");
     setEmail("");
