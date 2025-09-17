@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Mail, Lock } from "lucide-react"; // professional icon set
 import { signUp } from "../apicalls/authCalls";
+import {setUserData} from "../redux/userSlice.js"
+import { useDispatch } from "react-redux";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -10,6 +12,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleSubmit = async(e) => {
     try{
@@ -23,6 +26,7 @@ function Signup() {
     setEmail("");
     setPassword("");
     if(data){
+      dispatch(setUserData(data))
     navigate("/profile")
     }
     }catch(err){

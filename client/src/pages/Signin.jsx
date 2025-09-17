@@ -1,16 +1,33 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Lock } from "lucide-react";
+import { signIn } from "../apicalls/authCalls";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../redux/userSlice";
 
 function Signin() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async(e) => {
+    try{
     e.preventDefault();
+    const data = await signIn({userName,password})
+    console.log(data)
+
+    if(data){
+    dispatch(setUserData(data))
+    navigate("/dashboard")
+    }
     setUserName("");
     setPassword("");
+    }catch(err){
+      console.error(err)
+    }
   };
 
   return (

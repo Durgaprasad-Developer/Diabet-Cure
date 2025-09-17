@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     dibetesDuration: {
-        type: Number,
+        type: String,
     },
     medications: {
         type: String,

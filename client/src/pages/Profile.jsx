@@ -3,15 +3,36 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Mars, Venus, Pill, Utensils, Activity } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserData } from "../redux/userSlice";
+import { profileSetup } from "../apicalls/authCalls";
 
 function Profile() {
   const [step, setStep] = useState(1);
   const containerRef = useRef(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const user = useSelector((state)=> state.user.user);
 
+    const [formData, setFormData] = useState({
+    age: "",
+    gender: "",
+    weight: "",
+    diabetesType: "",
+    dibetesDuration: "",
+    medications: "",
+    activityLevel: "",
+    mealPattern: "",
+  });
 
   const handleSubmit = async()=>{
+
+    const user = await profileSetup(formData);
+    console.log(user)
+    if(user){
+    dispatch(setUserData(user))
     navigate("/dashboard")
+    }
   }
 
   // Animate container on step change
@@ -23,16 +44,6 @@ function Profile() {
     );
   }, [step]);
 
-  const [formData, setFormData] = useState({
-    age: "",
-    gender: "",
-    weight: 60,
-    diabetesType: "",
-    duration: "",
-    medications: "",
-    activity: "",
-    mealPattern: "",
-  });
 
   const handleNext = () => setStep((prev) => prev + 1);
   const handlePrev = () => setStep((prev) => prev - 1);
@@ -180,8 +191,8 @@ function Profile() {
                   {["<1 yr", "1–5 yrs"].map((d) => (
                     <OptionButton
                       key={d}
-                      active={formData.duration === d}
-                      onClick={() => updateField("duration", d)}
+                      active={formData.dibetesDuration === d}
+                      onClick={() => updateField("dibetesDuration", d)}
                     >
                       {d}
                     </OptionButton>
@@ -241,8 +252,8 @@ function Profile() {
                   {["Low", "Medium"].map((a) => (
                     <OptionButton
                       key={a}
-                      active={formData.activity === a}
-                      onClick={() => updateField("activity", a)}
+                      active={formData.activityLevel === a}
+                      onClick={() => updateField("activityLevel", a)}
                     >
                       <Activity size={18} /> {a}
                     </OptionButton>
