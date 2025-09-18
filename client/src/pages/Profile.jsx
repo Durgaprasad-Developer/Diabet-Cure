@@ -3,16 +3,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Mars, Venus, Pill, Utensils, Activity } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setUserData } from "../redux/userSlice";
 import { profileSetup } from "../apicalls/authCalls";
 
 function Profile() {
   const [step, setStep] = useState(1);
   const containerRef = useRef(null);
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const user = useSelector((state)=> state.user.user);
 
     const [formData, setFormData] = useState({
     age: "",
