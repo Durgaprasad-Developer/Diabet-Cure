@@ -27,7 +27,7 @@ function Signup() {
     setPassword("");
     if(data){
       dispatch(setUserData(data))
-    navigate("/profile")
+    navigate("/profileSetup")
     }
     }catch(err){
       console.error("Error during Sign Up",err);

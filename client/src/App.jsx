@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard.jsx"
 import Signin from "./pages/Signin.jsx"
 import Landingpage from "./pages/Landingpage.jsx"
 import Forgotpassword from "./pages/Forgotpassword.jsx"
-import Profile from "./pages/Profile.jsx"
+import Profile from "./pages/ProfileSetup.jsx"
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
       <Route path="/signin" element={<Signin/>}/>
       <Route path="/landingpage" element={<Landingpage/>}/>
       <Route path="/forgot-password" element={<Forgotpassword/>}/>
-      <Route path="/profile" element={<Profile/>}/>
+      <Route path="/profileSetup" element={<Profile/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
     </Routes>
   )
