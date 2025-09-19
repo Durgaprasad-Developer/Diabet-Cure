@@ -113,7 +113,7 @@ function Signin() {
               type="submit"
               className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold py-3 rounded-xl shadow-md hover:shadow-lg transition-all"
             >
-              Sign Up
+              Sign In
             </motion.button>
 
             {/* Forgot Password */}

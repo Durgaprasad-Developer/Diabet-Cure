@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/auth.routes.js';
 import cookieParser from 'cookie-parser';
 import userRoutes from "./routes/user.routes.js"
+import glucoseRoutes from "./routes/glucosereading.routes.js"
 
 dotenv.config();
 
@@ -22,7 +23,10 @@ app.use(express.json());
 
 // Authentication Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes)
+app.use('/api/user', userRoutes);
+
+// Glucose Routes
+app.use("/api/glucose",glucoseRoutes);
 
 // Connect to Database
 connectDB();
