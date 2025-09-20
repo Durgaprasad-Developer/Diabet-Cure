@@ -31,7 +31,7 @@ function Profile() {
     console.log(user)
     if(user){
     dispatch(setUserData(user))
-    navigate("/dashboard")
+    navigate("/")
     }
   }
 

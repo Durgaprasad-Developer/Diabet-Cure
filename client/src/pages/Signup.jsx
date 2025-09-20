@@ -25,6 +25,7 @@ function Signup() {
     setUserName("");
     setEmail("");
     setPassword("");
+    console.log("signup data", data)
     if(data){
       dispatch(setUserData(data))
     navigate("/profileSetup")

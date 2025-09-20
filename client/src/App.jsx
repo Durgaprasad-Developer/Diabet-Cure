@@ -4,19 +4,23 @@ import Dashboard from "./pages/Dashboard.jsx"
 import Signin from "./pages/Signin.jsx"
 import Landingpage from "./pages/Landingpage.jsx"
 import Forgotpassword from "./pages/Forgotpassword.jsx"
-import Profile from "./pages/ProfileSetup.jsx"
+import ProfileSetup from "./pages/ProfileSetup.jsx"
+import { useSelector } from "react-redux"
+import useCurrentUser from "./hooks/useCurrentUser.jsx"
+import {Navigate} from "react-router-dom"
 
 function App() {
-
+useCurrentUser();
+const userData = useSelector(state => state.user.user)
+console.log("App.jsx",userData)
   return (
     <Routes>
-      <Route path="/" element={<Dashboard/>}/>
-      <Route path="/signup" element={<Signup/>}/>
-      <Route path="/signin" element={<Signin/>}/>
-      <Route path="/landingpage" element={<Landingpage/>}/>
-      <Route path="/forgot-password" element={<Forgotpassword/>}/>
-      <Route path="/profileSetup" element={<Profile/>}/>
-      <Route path="/dashboard" element={<Dashboard/>}/>
+      <Route path="/" element={userData?<Dashboard/>:<Navigate to="/signin"/>}/>
+      <Route path="/signup" element={!userData?<Signup/>:<Navigate to="/"/>}/>
+      <Route path="/signin" element={!userData?<Signin/>:<Navigate to="/"/>}/>
+      <Route path="/landingpage" element={!userData?<Landingpage/>:<Navigate to="/"/>}/>
+      <Route path="/forgot-password" element={!userData?<Forgotpassword/>:<Navigate to="/"/>}/>
+      <Route path="/profileSetup" element={!userData?<ProfileSetup/>:<Navigate to="/"/>}/>
     </Routes>
   )
 }

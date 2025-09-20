@@ -17,11 +17,11 @@ function Signin() {
     try{
     e.preventDefault();
     const data = await signIn({userName,password})
-    console.log(data)
+    console.log("signIn data", data)
 
     if(data){
     dispatch(setUserData(data))
-    navigate("/dashboard")
+    navigate("/")
     }
     setUserName("");
     setPassword("");
