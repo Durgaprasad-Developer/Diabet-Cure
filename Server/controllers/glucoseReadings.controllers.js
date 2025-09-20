@@ -63,7 +63,7 @@ export const getglucoseAverages = async(req, res) => {
         const averages = {}
 
         Object.keys(grouped).forEach(tag => {
-            avg[mealTag] = {}
+            averages[mealTag] = {}
 
             Object.keys(grouped[mealTag]).forEach(mealContext => {
                 const values = grouped[mealTag][mealContext];
@@ -100,7 +100,7 @@ export const getGlucoseSummary = async(req, res) => {
 
     const readings = await GlucoseReadings.find(query);
 
-    const low = 0, normal = 0, high = 0;
+    let low = 0, normal = 0, high = 0;
 
     readings.forEach(r => {
         if(r.mealContext === "preMeal"){
