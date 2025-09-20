@@ -52,33 +52,30 @@ export const getglucoseAverages = async(req, res) => {
         }
         const readings = await GlucoseReadings.find(query);
 
-        const grouped = {}
+        let grouped = {}
 
         readings.forEach((r)=>{
             if(!r.mealTag || !r.mealContext) return
             if(!grouped[r.mealTag]) grouped[r.mealTag] = {preMeal: [], postMeal:[]}
-            grouped[r.mealTage][r.mealContext].push(r.value);
+            grouped[r.mealTag][r.mealContext].push(r.value);
         });
 
-        const averages = {}
+        let averages = {}
 
-        Object.keys(grouped).forEach(tag => {
+        Object.keys(grouped).forEach(mealTag => {
             averages[mealTag] = {}
 
             Object.keys(grouped[mealTag]).forEach(mealContext => {
-                const values = grouped[mealTag][mealContext];
+                let values = grouped[mealTag][mealContext];
                 if(values.length>0){
-                    const sum = values.reduce((a,b)=> a+b, 0);
+                    let sum = values.reduce((a,b)=> a+b, 0);
                     averages[mealTag][mealContext] = sum/values.length;
                 }else{
                     averages[mealTag][mealContext] = null
                 }
             })
-            const arr = grouped[tag];
-            averages[tag] = arr.reduce((a,b)=> a+b,0) / arr.length;
         })
         res.json({success: true, averages})
-        console.log(avg)
     }catch(err){
         res.status(500).json({success: false, message: err.message})
     }

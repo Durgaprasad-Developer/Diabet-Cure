@@ -17,7 +17,8 @@ const GlucosereadingSchema = await mongoose.Schema({
     },
     mealTag: {
         type: String,
-        enum:["breakfast", "lunch", "dinner", "bedtime"],
+        enum:["fasting", "breakfast", "lunch", "dinner", "bedtime"],
+        required:true
     },
     notes: {
         type: String,
