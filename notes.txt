@@ -1,0 +1,5 @@
+Raw Glucose data : Legend
+Average Glucose data : BarChart
+Glucose data Summary : pie Chart, radar chart
+
+sst with translation in glucoAdding notes
