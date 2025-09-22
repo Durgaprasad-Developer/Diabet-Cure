@@ -19,3 +19,5 @@ Server/dist/
 # OS junk
 .DS_Store
 Thumbs.db
+
+testCredentials.txt
