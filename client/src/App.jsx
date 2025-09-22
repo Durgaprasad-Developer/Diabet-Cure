@@ -8,6 +8,7 @@ import ProfileSetup from "./pages/ProfileSetup.jsx"
 import { useSelector } from "react-redux"
 import useCurrentUser from "./hooks/useCurrentUser.jsx"
 import {Navigate} from "react-router-dom"
+import Glucosereadings from "./pages/Glucosereadings.jsx"
 
 function App() {
 useCurrentUser();
@@ -21,6 +22,7 @@ console.log("App.jsx",userData)
       <Route path="/landingpage" element={!userData?<Landingpage/>:<Navigate to="/"/>}/>
       <Route path="/forgot-password" element={!userData?<Forgotpassword/>:<Navigate to="/"/>}/>
       <Route path="/profileSetup" element={!userData?<ProfileSetup/>:<Navigate to="/"/>}/>
+      <Route path="/glucose-readings" element={<Glucosereadings/>}/>
     </Routes>
   )
 }
