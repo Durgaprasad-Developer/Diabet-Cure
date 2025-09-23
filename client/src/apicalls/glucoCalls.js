@@ -24,7 +24,7 @@ export const getGlucose = async() => {
         console.log("get Glucose response", response.data);
         return response.data
     }catch(err){
-        console.error("get Glucose error: " err)
+        console.error("get Glucose error: ", err)
     }
 }
 

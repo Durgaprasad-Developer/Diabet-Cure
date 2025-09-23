@@ -7,6 +7,7 @@ function Glucosereadings() {
   const [mealTag, setMealTag] = useState("");
   const [notes, setNotes] = useState("");
   const [success, setSuccess] = useState(false);
+  const [listenting, setListening] = useState(false);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -119,6 +120,7 @@ function Glucosereadings() {
             onChange={(e) => setNotes(e.target.value)}
             className="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
           />
+          <input type="file" accept="audio/*"><button type="button" onClick={startListening} className={`px-3 py-2 rounded-full border ${listening? "bg-red-500 text-white":"bg-gray-100 text-gray-700"}`}>voice</button></input>
         </div>
 
         {/* Submit */}
