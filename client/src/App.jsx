@@ -18,6 +18,7 @@ console.log("App.jsx",userData)
     <Routes>
       <Route path="/" element={userData?<Dashboard/>:<Navigate to="/signin"/>}/>
       <Route path="/signup" element={!userData?<Signup/>:<Navigate to="/"/>}/>
+      {/* <Route path="/signin" element={<Signin/>}/> */}
       <Route path="/signin" element={!userData?<Signin/>:<Navigate to="/"/>}/>
       <Route path="/landingpage" element={!userData?<Landingpage/>:<Navigate to="/"/>}/>
       <Route path="/forgot-password" element={!userData?<Forgotpassword/>:<Navigate to="/"/>}/>
