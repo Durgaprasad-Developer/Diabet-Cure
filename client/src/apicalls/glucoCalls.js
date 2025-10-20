@@ -27,6 +27,15 @@ export const getGlucose = async() => {
         console.error("get Glucose error: ", err)
     }
 }
+export const getGlucoseMain = async() => {
+    try{
+        const response = await api.get(`/api/glucose/main`)
+        console.log("get Glucose response", response.data);
+        return response.data
+    }catch(err){
+        console.error("get Glucose error: ", err)
+    }
+}
 
 export const getGlucoseAverages = async() =>{
     try{

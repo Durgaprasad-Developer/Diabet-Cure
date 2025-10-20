@@ -20,7 +20,7 @@ export const addGlucoseReading = async(req, res) => {
 }
 }
 
-// Get readings (for line chart, raw data)
+// Get raw readings (for line chart, raw data)
 export const getGlucoseReadings = async(req, res) =>{
     try{
     const userId = req.userId;
@@ -37,6 +37,44 @@ export const getGlucoseReadings = async(req, res) =>{
     res.json({sucess:true, data:data})
     }catch(err){
         console.log(err);
+    }
+}
+
+// Get lineChart Gluco Readings
+
+export const getGlucomain = async(req, res) => {
+    try{
+        const userId = req.userId;
+        const {start, end} = req.query;
+        const query = {userId}
+
+        if(start & end){
+            query.createdAt = {$gte: new Date(start), $lte: new Date(end)}
+        }
+
+        const result = await GlucoseReadings.find(query).sort({createdAt:1})
+
+        const groupbyDate = {};
+
+        result.forEach(item => {
+            const date = new Date(item.createdAt).toLocaleDateString();
+
+            if(!groupbyDate[date]){
+                groupbyDate[date] = {preMeal: null, postMeal: null};
+            }
+
+            if(item.mealContext === "preMeal") groupbyDate[date].preMeal = item.value;
+            if(item.mealContext === "postMeal") groupbyDate[date].postMeal = item.value;
+        })
+
+        const chartData = Object.entries(groupbyDate).map(([date, values])=>({
+            name:date,
+            preMeal:values.preMeal,
+            postMeal:values.postMeal
+        }))
+        res.json({success:true, chartData})
+    }catch(err){
+        console.error("get Gluco main data error", err);
     }
 }
 

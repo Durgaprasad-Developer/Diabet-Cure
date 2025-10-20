@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { addGlucose } from "../apicalls/glucoCalls";
+import { useNavigate } from "react-router-dom";
 
 function Glucosereadings() {
   const [value, setValue] = useState("");
@@ -7,6 +8,7 @@ function Glucosereadings() {
   const [mealTag, setMealTag] = useState("");
   const [notes, setNotes] = useState("");
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -38,6 +40,13 @@ function Glucosereadings() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
     <div className=" bg-white rounded-2xl shadow-lg p-6 w-full max-w-md mx-auto">
+      <button
+          type="button"
+          onClick={() => navigate("/")} 
+          className="absolute top-4 left-4 text-blue-500 font-bold flex items-center gap-1 hover:text-blue-700"
+        >
+          ← Back
+        </button>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Glucose Reading */}
         <div>

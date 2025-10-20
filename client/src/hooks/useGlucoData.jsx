@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { getGlucose, getGlucoseAverages, getGlucoseSummary } from "../apicalls/glucoCalls";
+import { getGlucose, getGlucoseAverages, getGlucoseMain, getGlucoseSummary } from "../apicalls/glucoCalls";
+
+
+
 
 
 export default function useGlucoData(){
+const [mainGluco, setMaingluco] = useState(null);
 const [rawGluco, setRawgluco] = useState("");
 const [averageGluco, setAveragegluco] = useState("");
 const [summaryGluco, setSummarygluco] = useState("");
@@ -11,10 +15,12 @@ const [loading, setLoading] = useState(true);
 useEffect(()=>{
   const fetchData = async() => {
     try{
-  const raw = await getGlucose();
+const raw = await getGlucose();
+  const main = await getGlucoseMain();
   const average = await getGlucoseAverages();
   const summary = await getGlucoseSummary();
-  setRawgluco(raw.data);
+  setRawgluco(raw);
+  setMaingluco(main);
   setAveragegluco(average.averages);
   setSummarygluco(summary);
     }catch(err){
@@ -25,5 +31,5 @@ useEffect(()=>{
   }
   fetchData();
 },[])
-return {rawGluco, averageGluco, summaryGluco, loading}
+return {rawGluco, mainGluco, averageGluco, summaryGluco, loading}
 }
