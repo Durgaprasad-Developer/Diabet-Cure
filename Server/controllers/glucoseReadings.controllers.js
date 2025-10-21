@@ -1,3 +1,4 @@
+import ai from "../utils/geminiClient.js"
 import GlucoseReadings from "../models/glucosereading.model.js";
 // add glucoseReadings
 export const addGlucoseReading = async(req, res) => {
@@ -162,3 +163,40 @@ export const getGlucoseSummary = async(req, res) => {
     res.json({success:false, message: err.message})
 }
 };
+
+// controllers/glucoseReadings.controllers.js
+
+export const glucoseReport = async (req, res) => {
+  try {
+    const userId = req.userId; 
+    const gluco = await GlucoseReadings.find({userId})
+    // For demo, simple input
+    const contents = `Generate a glucose report for user ID: ${gluco}.`;
+
+    // Generate AI report
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: contents,
+      config: {
+        systemInstruction: "You are a medical assistant AI generating glucose reports.",
+      },
+    });
+    const reportText = response.text || "No report generated";
+
+    return res.status(200).json({
+      success: true,
+      report: reportText,
+      message: gluco
+    });
+
+  } catch (err) {
+    console.error("AI Report Error:", err.message || err);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to generate glucose report",
+      error: err.message || err,
+    });
+  }
+};
+

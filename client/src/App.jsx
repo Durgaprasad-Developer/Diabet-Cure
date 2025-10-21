@@ -20,10 +20,10 @@ console.log("App.jsx",userData)
       <Route path="/signup" element={!userData?<Signup/>:<Navigate to="/"/>}/>
       {/* <Route path="/signin" element={<Signin/>}/> */}
       <Route path="/signin" element={!userData?<Signin/>:<Navigate to="/"/>}/>
-      <Route path="/landingpage" element={userData?<Landingpage/>:<Navigate to="/"/>}/>
+      <Route path="/landingpage" element={!userData?<Landingpage/>:<Navigate to="/"/>}/>
       <Route path="/forgot-password" element={!userData?<Forgotpassword/>:<Navigate to="/"/>}/>
-      <Route path="/profileSetup" element={!userData?<ProfileSetup/>:<Navigate to="/"/>}/>
-      <Route path="/glucose-readings" element={<Glucosereadings/>}/>
+      <Route path="/profileSetup" element={<ProfileSetup/>}/>
+      <Route path="/glucose-readings" element={userData?<Glucosereadings/>:<Navigate to="/signin"/>}/>
     </Routes>
   )
 }
