@@ -23,33 +23,41 @@
 - **User Dashboard:** Visualize glucose levels, meal contexts, and trends.  
 - **Profile Management:** Users can set up and update their profile and health details.  
 - **Authentication:** Secure sign-up, login, and forgot password functionality.  
-- **Responsive UI:** Works seamlessly on mobile and desktop devices.  
-- **Notifications & Alerts:** Reminders for glucose monitoring and health insights.
+- **Responsive UI:** Works seamlessly on mobile and desktop devices.
 
 ---
 
 ## Screenshots
 
 ### Landing Page
-![Landing Page](./assets/mockups/landingpage.png)
+![Landing Page](./client/src/assets/mockups/landingPage.png)
 
 ### Dashboard
-![Dashboard](./assets/mockups/dashboard.png)
+![Dashboard](./client/src/assets/mockups/dashboard.png)
+
+### Profile
+![Profile](./client/src/assets/mockups/profile.png)
 
 ### Profile Setup
-![Profile Setup](./assets/mockups/profilesetup.png)
+![Profile Setup](./client/src/assets/mockups/editProfile.png)
 
 ### AI Report
-![AI Report](./assets/mockups/aireport.png)
+![AI Report](./client/src/assets/mockups/AIReport.png)
+
+### Sign Up
+![SignUp](./client/src/assets/mockups/signUp.png)
+
+### Sign In
+![SignUp](./client/src/assets/mockups/signIn.png)
 
 ---
 
 ## Tech Stack
 
-- **Frontend:** React, Tailwind CSS, React Router  
+- **Frontend:** React, Tailwind CSS 
 - **Backend:** Node.js, Express.js, MongoDB  
-- **Authentication:** JWT, Supabase (or your backend auth method)  
-- **AI Integration:** OpenAI API for glucose report generation  
+- **Authentication:** JWT 
+- **AI Integration:** Gemini 2.5-flash for glucose report generation  
 - **State Management:** Redux Toolkit  
 
 ---
@@ -60,5 +68,51 @@ Follow these steps to run the project locally:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/diabetic-cure-webapp.git
-cd diabetic-cure-webapp
+git clone https://github.com/Durgaprasad-Developer/Diabet-Cure
+cd diabetic-cure
+```
+
+2. **Install frontend dependencies**
+```bash
+cd client
+npm install
+```
+
+3. **Install backend dependencies**
+```bash
+cd Server
+npm install
+```
+
+4. **Setup environment variables**
+Create a .env file in the root of your backend folder:
+```bash
+PORT=8000
+MONGO_URI=your_mongodb_connection_string
+OPENAI_API_KEY=your_openai_api_key
+JWT_SECRET=your_jwt_secret
+```
+
+5. **Run the application**
+```bash
+# Backend
+npm run dev
+
+# Frontend (in a separate terminal)
+cd ../frontend
+npm start
+```
+The app should now be running at http://localhost:8000.
+
+## Usage
+
+1. Sign up or log in with your credentials.
+
+2. Fill in your profile details and health information.
+
+3. Add your glucose readings manually or via supported devices.
+
+4. View your dashboard to monitor trends and insights.
+
+5. Generate AI-powered glucose reports anytime.
+
