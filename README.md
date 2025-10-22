@@ -6,6 +6,19 @@
 
 ---
 
+## Deployment and testing 
+**Deployed Line:** [Diabet Cured](https://diabet-cure.vercel.app/landingpage)
+
+**Testing Credentials**
+```bash
+    {
+  "name": "Durga Prasad",
+  "userName": "durga123",
+  "email": "durga@example.com",
+  "password": "StrongP@ssw0rd"
+}
+```
+
 ## Table of Contents
 - [Features](#features)
 - [Screenshots](#screenshots)
@@ -32,7 +45,12 @@
 ### Landing Page
 ![Landing Page](./client/src/assets/mockups/landingPage.png)
 
-### Dashboard
+### Dashboard{
+  "name": "Durga Prasad",
+  "userName": "durga123",
+  "email": "durga@example.com",
+  "password": "StrongP@ssw0rd"
+}
 ![Dashboard](./client/src/assets/mockups/dashboard.png)
 
 ### Profile
