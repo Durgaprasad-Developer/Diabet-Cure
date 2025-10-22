@@ -1,94 +1,95 @@
-import React from 'react';
+import React from "react";
+import GlucoseTrackerImage from "../assets/mockups/glucoAdd.png";
+import DashboardImage from "../assets/mockups/dashboard.png";
+import AIReportImage from "../assets/mockups/AIReport.png";
 
-// Reusable FeatureCard component
-const FeatureCard = ({ title, subtitle, children }) => (
-  <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl w-full">
-    <h3 className="text-xl font-semibold text-gray-900 mb-1">{title}</h3>
-    <p className="text-sm text-blue-600 font-medium mb-4">{subtitle}</p>
-    {/* Content Area for mockups */}
-    <div className="bg-gray-50 p-4 rounded-lg border border-gray-100 h-64 flex flex-col justify-center items-center text-sm text-gray-500 overflow-hidden">
-      {children}
-    </div>
+
+const FeatureCard = ({ title, children }) => (
+  <div className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:translate-y-[-2px] w-full border border-gray-100">
+    <h3 className="text-xl font-bold text-gray-900 mb-6 border-b pb-3">
+      {title}
+    </h3>
+    {children}
   </div>
 );
 
+
 const KeyFeatures = () => {
   return (
-    <section id="features" className="py-16">
-      <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center md:text-left">Key Features</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        {/* Feature 1: Effortless Glucose Tracking */}
-        <FeatureCard title="Effortless Glucose Tracking" subtitle="Simple Data Entry">
-          <div className="w-full p-4 flex flex-col justify-between h-full">
-             <div className="mb-4">
-                 <label className="block text-xs text-gray-500 font-medium">Glucose Reading (mg/dL)</label>
-                 <input type="text" value="120" readOnly className="w-full p-2 border border-gray-300 rounded-md mt-1 text-gray-800 font-semibold" />
-             </div>
-             <div className="mb-4">
-                 <label className="block text-xs text-gray-500 font-medium mb-1">Meal Context</label>
-                 <div className="flex space-x-2">
-                     <button className="flex-1 py-1 px-2 text-xs rounded-md border border-blue-500 text-blue-600">Pre-Meal</button>
-                     <button className="flex-1 py-1 px-2 text-xs rounded-md bg-blue-600 text-white">Post-Meal</button>
-                 </div>
-             </div>
-             <div className="mb-4">
-                 <label className="block text-xs text-gray-500 font-medium">Meal Type</label>
-                 <select className="w-full p-2 border border-gray-300 rounded-md mt-1 text-gray-800 text-sm">
-                     <option>Breakfast</option>
-                 </select>
-             </div>
-             <button className="w-full bg-blue-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition">
-                Add Reading
-             </button>
+    <section id="features" className="py-20 bg-gray-50">
+      <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+        Key Features
+      </h2>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        {/* Feature 1: Effortless Glucose Tracking - USING IMAGE */}
+        <FeatureCard title="Effortless Glucose Tracking">
+          <div className="w-full h-80 relative overflow-hidden rounded-xl shadow-lg border border-gray-100">
+            <img
+              src={GlucoseTrackerImage}
+              alt="Glucose Reading Entry Form"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div className="mt-4 space-y-3">
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-blue-700">Quick Entry:</span>{" "}
+              Log readings in seconds using a clean, simple mobile-first
+              interface.
+            </p>
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-blue-700">
+                Contextual Notes:
+              </span>{" "}
+              Add meal details and notes for rich analysis later.
+            </p>
           </div>
         </FeatureCard>
 
-        {/* Feature 2: Comprehensive Dashboard */}
-        <FeatureCard title="Comprehensive Dashboard" subtitle="Visualizing Your Progress">
-          <div className="w-full p-4 flex flex-col justify-between h-full">
-            <div className="grid grid-cols-3 gap-2 text-center mb-4">
-              <div className="bg-blue-100 p-2 rounded-md">
-                <p className="text-lg font-bold text-blue-700">25</p>
-                <p className="text-xs text-blue-600">Low</p>
-              </div>
-              <div className="bg-green-100 p-2 rounded-md">
-                <p className="text-lg font-bold text-green-700">31</p>
-                <p className="text-xs text-green-600">Normal</p>
-              </div>
-              <div className="bg-red-100 p-2 rounded-md">
-                <p className="text-lg font-bold text-red-700">24</p>
-                <p className="text-xs text-red-600">High</p>
-              </div>
-            </div>
-            <div className="h-24 bg-white border border-gray-200 rounded-lg p-2 mb-4 flex items-center justify-center">
-              <p className="text-xs text-gray-500">Glucose Trend Chart Placeholder</p>
-            </div>
-            <div className="h-16 bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center">
-              <p className="text-xs text-gray-500">Distribution Chart Placeholder</p>
-            </div>
+        {/* Feature 2: Comprehensive Dashboard - USING IMAGE */}
+        <FeatureCard title="Comprehensive Dashboard">
+          <div className="w-full h-80 relative overflow-hidden rounded-xl shadow-lg border border-gray-100">
+            <img
+              src={DashboardImage}
+              alt="Diabetes Dashboard Overview"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div className="mt-4 space-y-3">
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-green-700">
+                Visualize Trends:
+              </span>{" "}
+              See your glucose history, distribution, and averages at a glance.
+            </p>
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-green-700">Key Metrics:</span>{" "}
+              Instantly view counts of Low, Normal, and High readings for the
+              period.
+            </p>
           </div>
         </FeatureCard>
 
-        {/* Feature 3: Smart AI Guidance */}
-        <FeatureCard title="Smart AI Guidance" subtitle="Personalized Health Reports">
-          <div className="w-full p-4 flex flex-col justify-between h-full text-left">
-            <h4 className="text-base font-bold text-gray-800 mb-2">GlucoAI Smart Glucose Report</h4>
-            <div className="flex-grow overflow-y-auto pr-2 custom-scrollbar"> {/* Added custom-scrollbar for visual effect */}
-              <p className="text-xs mb-2 text-gray-600 leading-tight">
-                **Observation:** Glucose variability has increased over the last 7 days, primarily due to inconsistent evening meals. Your average post-meal readings have shown a slight upward trend.
-              </p>
-              <p className="text-xs mb-2 text-gray-600 leading-tight">
-                **Recommendation:** Consider adjusting your evening meal composition, focusing on reducing refined carbohydrates by 15-20%. Incorporate a short 15-minute walk after dinner.
-              </p>
-              <p className="text-xs text-gray-600 leading-tight">
-                **Insight:** Your current activity level is 'Medium'. Increasing it to 'High' could significantly improve glucose control. Discuss this with your doctor.
-              </p>
-            </div>
-            <button className="mt-4 text-sm text-blue-600 font-semibold self-start hover:underline">
-                View Full AI Analysis →
-            </button>
+        {/* Feature 3: Smart AI Guidance - USING IMAGE */}
+        <FeatureCard title="Smart AI Guidance">
+          <div className="w-full h-80 relative overflow-hidden rounded-xl shadow-lg border border-gray-100">
+            <img
+              src={AIReportImage}
+              alt="GlucoAI Smart Glucose Report"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-3">
+            <h4 className="text-base font-bold text-gray-800">
+              GlucoAI Summary
+            </h4>
+            <p className="text-sm text-gray-700">
+              <span className="font-semibold text-blue-700">
+                Actionable Insights:
+              </span>{" "}
+              Get personalized recommendations based on your data patterns.
+            </p>
           </div>
         </FeatureCard>
       </div>

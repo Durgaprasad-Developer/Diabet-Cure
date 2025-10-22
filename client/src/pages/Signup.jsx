@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Mail, Lock } from "lucide-react"; // professional icon set
 import { signUp } from "../apicalls/authCalls";
-import {setUserData} from "../redux/userSlice.js"
+import { setUserData } from "../redux/userSlice.js";
 import { useDispatch } from "react-redux";
 
 function Signup() {
@@ -11,28 +11,27 @@ function Signup() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSubmit = async(e) => {
-    try{
-    e.preventDefault();
-    // handle signup logic here
-    
-    const data = await signUp({name, userName, email, password})
-    console.log("Server response", data)
-    setName("");
-    setUserName("");
-    setEmail("");
-    setPassword("");
-    console.log("signup data", data)
-    if(data){
-      dispatch(setUserData(data))
-    navigate("/profileSetup")
-    }
-    }catch(err){
-      console.error("Error during Sign Up",err);
-      console.error("Server response", err.resoponse?.data)
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+
+      const data = await signUp({ name, userName, email, password });
+      console.log("Server response", data);
+      setName("");
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      console.log("signup data", data);
+      if (data) {
+        dispatch(setUserData(data));
+        navigate("/profileSetup");
+      }
+    } catch (err) {
+      console.error("Error during Sign Up", err);
+      console.error("Server response", err.resoponse?.data);
     }
   };
 
@@ -53,9 +52,6 @@ function Signup() {
               share your health insights with doctors effortlessly.
             </p>
           </motion.div>
-
-          {/* Subtle overlay */}
-          {/* <div className="absolute inset-0 bg-white/10 backdrop-blur-sm" /> */}
         </div>
 
         {/* Right Side Form */}
@@ -79,7 +75,10 @@ function Signup() {
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                <User
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={18}
+                />
                 <input
                   type="text"
                   placeholder="John Doe"
@@ -110,7 +109,10 @@ function Signup() {
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                <Mail
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={18}
+                />
                 <input
                   type="email"
                   placeholder="you@example.com"
@@ -127,7 +129,10 @@ function Signup() {
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                <Lock
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                  size={18}
+                />
                 <input
                   type="password"
                   placeholder="••••••••"
@@ -151,7 +156,10 @@ function Signup() {
             {/* Switch */}
             <p className="text-center text-sm text-gray-600 mt-4">
               Already have an account?{" "}
-              <Link to="/signin" className="text-cyan-600 font-medium hover:underline">
+              <Link
+                to="/signin"
+                className="text-cyan-600 font-medium hover:underline"
+              >
                 Sign In
               </Link>
             </p>

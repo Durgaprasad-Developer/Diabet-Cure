@@ -1,43 +1,62 @@
 import React, { useEffect, useRef } from "react";
 import { User } from "lucide-react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  BarChart, Bar,
-  PieChart, Pie, Cell,
-  Area, AreaChart
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  PieChart,
+  Pie,
+  Cell,
+  Area,
+  AreaChart,
 } from "recharts";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import useGlucoData from "../hooks/useGlucoData";
 import { useNavigate } from "react-router-dom";
-import { TrendingUp, Activity, Plus, FileText, AlertCircle, Menu } from "lucide-react";
+import {
+  TrendingUp,
+  Activity,
+  Plus,
+  FileText,
+  AlertCircle,
+  Menu,
+} from "lucide-react";
 
 const COLORS = ["#3b82f6", "#10b981", "#ef4444"];
 
 export default function Dashboard() {
   const pageRef = useRef(null);
-  const {mainGluco, averageGluco, summaryGluco} = useGlucoData();
+  const { mainGluco, averageGluco, summaryGluco } = useGlucoData();
   const navigate = useNavigate();
 
-  const mainData = mainGluco?.chartData?.map(item => ({
-    name:item.name,
-    preMeal:item.preMeal,
-    postMeal:item.postMeal
-  }))
+  const mainData = mainGluco?.chartData?.map((item) => ({
+    name: item.name,
+    preMeal: item.preMeal,
+    postMeal: item.postMeal,
+  }));
 
-  const averageData = Object.entries(averageGluco).map(([meal, values])=>({
-    name:meal,
-    preMeal:values.preMeal,
-    postMeal:values.postMeal
-  }))
-  
+  const averageData = Object.entries(averageGluco).map(([meal, values]) => ({
+    name: meal,
+    preMeal: values.preMeal,
+    postMeal: values.postMeal,
+  }));
+
   const summaryData = [
-    {name:"Low",value:summaryGluco.low},
-    {name:"Normal",value:summaryGluco.normal},
-    {name:"High",value:summaryGluco.high}
+    { name: "Low", value: summaryGluco.low },
+    { name: "Normal", value: summaryGluco.normal },
+    { name: "High", value: summaryGluco.high },
   ];
 
-  const totalReadings = summaryGluco.low + summaryGluco.normal + summaryGluco.high;
+  const totalReadings =
+    summaryGluco.low + summaryGluco.normal + summaryGluco.high;
 
   useEffect(() => {
     gsap.fromTo(
@@ -59,7 +78,9 @@ export default function Dashboard() {
           <Icon className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
         </div>
       </div>
-      <h3 className="text-white/80 text-xs sm:text-sm font-medium mb-1">{title}</h3>
+      <h3 className="text-white/80 text-xs sm:text-sm font-medium mb-1">
+        {title}
+      </h3>
       <p className="text-white text-2xl sm:text-3xl font-bold mb-1">{value}</p>
       <p className="text-white/70 text-xs">{subtitle}</p>
     </motion.div>
@@ -99,13 +120,13 @@ export default function Dashboard() {
               <h1 className="text-lg sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent truncate">
                 Diabetes Dashboard
               </h1>
-              <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 hidden sm:block">Track and manage your glucose levels</p>
+              <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 hidden sm:block">
+                Track and manage your glucose levels
+              </p>
             </div>
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-              <button className="p-2 sm:hidden bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                <Menu className="w-5 h-5" />
-              </button>
-              <User size={26}  onClick={()=>navigate("/profile")} />
+              <button className="p-2 sm:hidden bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"></button>
+              <User className="cursor-pointer" size={26} onClick={() => navigate("/profile")} />
             </div>
           </div>
         </div>
@@ -117,7 +138,11 @@ export default function Dashboard() {
           <StatCard
             title="Low Readings"
             value={summaryGluco.low}
-            subtitle={`${totalReadings > 0 ? ((summaryGluco.low / totalReadings) * 100).toFixed(1) : 0}% of total`}
+            subtitle={`${
+              totalReadings > 0
+                ? ((summaryGluco.low / totalReadings) * 100).toFixed(1)
+                : 0
+            }% of total`}
             icon={AlertCircle}
             color="from-blue-500 to-blue-600"
             delay={0.2}
@@ -125,7 +150,11 @@ export default function Dashboard() {
           <StatCard
             title="Normal Readings"
             value={summaryGluco.normal}
-            subtitle={`${totalReadings > 0 ? ((summaryGluco.normal / totalReadings) * 100).toFixed(1) : 0}% of total`}
+            subtitle={`${
+              totalReadings > 0
+                ? ((summaryGluco.normal / totalReadings) * 100).toFixed(1)
+                : 0
+            }% of total`}
             icon={Activity}
             color="from-green-500 to-emerald-600"
             delay={0.3}
@@ -133,7 +162,11 @@ export default function Dashboard() {
           <StatCard
             title="High Readings"
             value={summaryGluco.high}
-            subtitle={`${totalReadings > 0 ? ((summaryGluco.high / totalReadings) * 100).toFixed(1) : 0}% of total`}
+            subtitle={`${
+              totalReadings > 0
+                ? ((summaryGluco.high / totalReadings) * 100).toFixed(1)
+                : 0
+            }% of total`}
             icon={TrendingUp}
             color="from-red-500 to-rose-600"
             delay={0.4}
@@ -154,55 +187,68 @@ export default function Dashboard() {
                 <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="text-base sm:text-lg font-semibold text-gray-800 truncate">Glucose Trend</h2>
-                <p className="text-xs sm:text-sm text-gray-500">Pre and post-meal</p>
+                <h2 className="text-base sm:text-lg font-semibold text-gray-800 truncate">
+                  Glucose Trend
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-500">
+                  Pre and post-meal
+                </p>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={240}>
-              <AreaChart data={mainData} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+              <AreaChart
+                data={mainData}
+                margin={{ top: 5, right: 5, left: -20, bottom: 5 }}
+              >
                 <defs>
                   <linearGradient id="colorPreMeal" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                   </linearGradient>
-                  <linearGradient id="colorPostMeal" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                  <linearGradient
+                    id="colorPostMeal"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis 
-                  dataKey="name" 
-                  stroke="#6b7280" 
-                  style={{ fontSize: '10px' }} 
+                <XAxis
+                  dataKey="name"
+                  stroke="#6b7280"
+                  style={{ fontSize: "10px" }}
                   tick={{ fontSize: 10 }}
                 />
-                <YAxis 
-                  stroke="#6b7280" 
-                  style={{ fontSize: '10px' }}
+                <YAxis
+                  stroke="#6b7280"
+                  style={{ fontSize: "10px" }}
                   tick={{ fontSize: 10 }}
                   width={40}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }}
+                <Legend
+                  wrapperStyle={{ fontSize: "11px", paddingTop: "10px" }}
                   iconSize={10}
                 />
-                <Area 
-                  type="monotone" 
-                  dataKey="preMeal" 
-                  stroke="#3b82f6" 
-                  strokeWidth={2} 
-                  fillOpacity={1} 
-                  fill="url(#colorPreMeal)" 
+                <Area
+                  type="monotone"
+                  dataKey="preMeal"
+                  stroke="#3b82f6"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill="url(#colorPreMeal)"
                 />
-                <Area 
-                  type="monotone" 
-                  dataKey="postMeal" 
-                  stroke="#10b981" 
-                  strokeWidth={2} 
-                  fillOpacity={1} 
-                  fill="url(#colorPostMeal)" 
+                <Area
+                  type="monotone"
+                  dataKey="postMeal"
+                  stroke="#10b981"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill="url(#colorPostMeal)"
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -220,7 +266,9 @@ export default function Dashboard() {
                 <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="text-base sm:text-lg font-semibold text-gray-800 truncate">Distribution</h2>
+                <h2 className="text-base sm:text-lg font-semibold text-gray-800 truncate">
+                  Distribution
+                </h2>
                 <p className="text-xs sm:text-sm text-gray-500">By range</p>
               </div>
             </div>
@@ -235,7 +283,7 @@ export default function Dashboard() {
                   innerRadius={50}
                   outerRadius={80}
                   paddingAngle={5}
-                  label={({percent}) => `${(percent * 100).toFixed(0)}%`}
+                  label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
                   labelLine={false}
                 >
                   {summaryData.map((entry, index) => (
@@ -243,10 +291,7 @@ export default function Dashboard() {
                   ))}
                 </Pie>
                 <Tooltip content={<CustomTooltip />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '11px' }}
-                  iconSize={10}
-                />
+                <Legend wrapperStyle={{ fontSize: "11px" }} iconSize={10} />
               </PieChart>
             </ResponsiveContainer>
           </motion.div>
@@ -263,28 +308,33 @@ export default function Dashboard() {
                 <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="text-base sm:text-lg font-semibold text-gray-800 truncate">Average by Meal</h2>
+                <h2 className="text-base sm:text-lg font-semibold text-gray-800 truncate">
+                  Average by Meal
+                </h2>
                 <p className="text-xs sm:text-sm text-gray-500">Pre vs post</p>
               </div>
             </div>
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={averageData} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+              <BarChart
+                data={averageData}
+                margin={{ top: 5, right: 5, left: -20, bottom: 5 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis 
-                  dataKey="name" 
-                  stroke="#6b7280" 
-                  style={{ fontSize: '10px' }}
+                <XAxis
+                  dataKey="name"
+                  stroke="#6b7280"
+                  style={{ fontSize: "10px" }}
                   tick={{ fontSize: 10 }}
                 />
-                <YAxis 
-                  stroke="#6b7280" 
-                  style={{ fontSize: '10px' }}
+                <YAxis
+                  stroke="#6b7280"
+                  style={{ fontSize: "10px" }}
                   tick={{ fontSize: 10 }}
                   width={40}
                 />
                 <Tooltip content={<CustomTooltip />} />
-                <Legend 
-                  wrapperStyle={{ fontSize: '11px', paddingTop: '10px' }}
+                <Legend
+                  wrapperStyle={{ fontSize: "11px", paddingTop: "10px" }}
                   iconSize={10}
                 />
                 <Bar dataKey="preMeal" fill="#3b82f6" radius={[6, 6, 0, 0]} />
@@ -302,8 +352,9 @@ export default function Dashboard() {
           transition={{ delay: 0.8, duration: 0.5 }}
         >
           <button
-          onClick={()=> navigate("/aiReport")}
-           className="w-full flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg active:scale-95 transition-all text-sm sm:text-base">
+            onClick={() => navigate("/aiReport")}
+            className="w-full flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg active:scale-95 transition-all text-sm sm:text-base"
+          >
             <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
             <span>Generate AI Report</span>
           </button>

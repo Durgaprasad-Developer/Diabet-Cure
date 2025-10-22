@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Mars, Venus, Pill, Utensils, Activity } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/userSlice";
 import { profileSetup } from "../apicalls/authCalls";
 
 function Profile() {
   const [step, setStep] = useState(1);
   const containerRef = useRef(null);
-  
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-    const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     age: "",
     gender: "",
     weight: "",
@@ -25,15 +25,14 @@ function Profile() {
     mealPattern: "",
   });
 
-  const handleSubmit = async()=>{
-
+  const handleSubmit = async () => {
     const user = await profileSetup(formData);
-    console.log(user)
-    if(user){
-    dispatch(setUserData(user))
-    navigate("/")
+    console.log(user);
+    if (user) {
+      dispatch(setUserData(user));
+      navigate("/");
     }
-  }
+  };
 
   // Animate container on step change
   useEffect(() => {
@@ -43,7 +42,6 @@ function Profile() {
       { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }
     );
   }, [step]);
-
 
   const handleNext = () => setStep((prev) => prev + 1);
   const handlePrev = () => setStep((prev) => prev - 1);
@@ -56,7 +54,11 @@ function Profile() {
     <button
       onClick={onClick}
       className={`flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border shadow-sm transition-all w-full
-        ${active ? "bg-blue-600 text-white" : "bg-white text-gray-700 border-gray-200"}`}
+        ${
+          active
+            ? "bg-blue-600 text-white"
+            : "bg-white text-gray-700 border-gray-200"
+        }`}
     >
       {children}
     </button>

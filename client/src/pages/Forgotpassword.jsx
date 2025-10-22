@@ -8,7 +8,6 @@ function Forgotpassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle OTP send logic
     console.log("OTP sent to:", email);
   };
 

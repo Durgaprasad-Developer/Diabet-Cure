@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 const GlucosereadingSchema = await mongoose.Schema({
-    userId:{
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        required:true
+        ref: "User",
+        required: true
     },
     value: {
         type: Number,
-        required:true,
+        required: true,
     },
     mealContext: {
         type: String,
@@ -17,13 +17,13 @@ const GlucosereadingSchema = await mongoose.Schema({
     },
     mealTag: {
         type: String,
-        enum:["fasting", "breakfast", "lunch", "dinner", "bedtime"],
-        required:true
+        enum: ["fasting", "breakfast", "lunch", "dinner", "bedtime"],
+        required: true
     },
     notes: {
         type: String,
     }
-},{timestamps: true});
+}, { timestamps: true });
 
 const GlucoseReadings = mongoose.model("GlucoseReading", GlucosereadingSchema)
 export default GlucoseReadings

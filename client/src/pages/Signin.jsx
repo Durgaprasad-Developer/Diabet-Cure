@@ -13,20 +13,20 @@ function Signin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = async(e) => {
-    try{
-    e.preventDefault();
-    const data = await signIn({userName,password})
-    console.log("signIn data", data)
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const data = await signIn({ userName, password });
+      console.log("signIn data", data);
 
-    if(data){
-    dispatch(setUserData(data))
-    navigate("/")
-    }
-    setUserName("");
-    setPassword("");
-    }catch(err){
-      console.error(err)
+      if (data) {
+        dispatch(setUserData(data));
+        navigate("/");
+      }
+      setUserName("");
+      setPassword("");
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -117,12 +117,12 @@ function Signin() {
             </motion.button>
 
             {/* Forgot Password */}
-            <Link
+            {/* <Link
               to="/forgot-password"
               className="text-sm text-center text-secondary hover:text-primary underline"
             >
               Forgot Password?
-            </Link>
+            </Link> */}
 
             {/* Sign Up */}
             <p className="text-center text-sm text-gray-600 mt-4">

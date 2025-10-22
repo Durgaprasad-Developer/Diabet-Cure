@@ -26,16 +26,16 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 
 // Glucose Routes
-app.use("/api/glucose",glucoseRoutes);
+app.use("/api/glucose", glucoseRoutes);
 
 // Connect to Database
 connectDB();
 
 app.get('/', (req, res) => {
-    res.send("Server is running")
+  res.send("Server is running")
 })
 
 // Start Server
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 }); 

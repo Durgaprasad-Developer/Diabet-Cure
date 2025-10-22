@@ -80,9 +80,11 @@ function Profile() {
     <button
       onClick={onClick}
       className={`flex items-center justify-center gap-2 px-4 py-2 rounded-xl border shadow-sm transition-all
-        ${active
-          ? "bg-blue-600 text-white shadow-md scale-105"
-          : "bg-white text-gray-700 border-gray-200 hover:bg-blue-50"}`}
+        ${
+          active
+            ? "bg-blue-600 text-white shadow-md scale-105"
+            : "bg-white text-gray-700 border-gray-200 hover:bg-blue-50"
+        }`}
     >
       {children}
     </button>
@@ -94,16 +96,16 @@ function Profile() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex justify-center py-12 px-4">
       <BackButton />
       <div className="w-full max-w-4xl bg-white/70 backdrop-blur-xl shadow-2xl rounded-3xl p-10 border border-blue-100 transition-all">
-
         {/* Header with Avatar */}
         <div className="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
           <div className="flex items-center gap-4">
             <div className="relative">
-              <User className="text-blue-700 rounded-4xl" size={56}/>
-              
+              <User className="text-blue-700 rounded-4xl" size={56} />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-blue-700">{formData.name}</h2>
+              <h2 className="text-3xl font-bold text-blue-700">
+                {formData.name}
+              </h2>
               <p className="text-gray-600">{formData.email}</p>
             </div>
           </div>
