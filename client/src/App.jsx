@@ -18,8 +18,12 @@ function App() {
   console.log("App.jsx", userData);
   return (
     <Routes>
-      <Route
+            <Route
         path="/"
+        element={<Navigate to={userData ? "/dashboard" : "/landingpage"} />}
+      />
+      <Route
+        path="/dashboard"
         element={userData ? <Dashboard /> : <Navigate to="/landingpage" />}
       />
       <Route
@@ -30,10 +34,6 @@ function App() {
       <Route
         path="/signin"
         element={!userData ? <Signin /> : <Navigate to="/" />}
-      />
-      <Route
-        path="/landingpage"
-        element={!userData ? <Landingpage /> : <Navigate to="/" />}
       />
       <Route
         path="/forgot-password"
