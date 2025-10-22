@@ -20,7 +20,7 @@ function App() {
     <Routes>
             <Route
         path="/"
-        element={<Navigate to={userData ? "/dashboard" : "/landingpage"} />}
+        element={<Navigate to={userData ? <Dashboard/> : <Navigate to="/landingpage" />} />}
       />
       <Route
         path="/dashboard"
