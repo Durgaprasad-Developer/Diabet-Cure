@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8000;
 
 app.use(
   cors({
-    origin: "https://diabet-cure.vercel.app", // your frontend domain
+    origin: "https://diabet-cure.vercel.app/", // your frontend domain
     credentials: true, // allow cookies
   })
 );
