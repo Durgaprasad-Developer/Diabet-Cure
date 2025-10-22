@@ -15,9 +15,13 @@ const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173", // local dev
+    "https://diabet-cure-ivde8lkzq-durga-prasads-projects-8aa951c8.vercel.app/" // replace with your actual deployed URL
+  ],
   credentials: true,
 }));
+
 app.use(cookieParser());
 app.use(express.json());
 
