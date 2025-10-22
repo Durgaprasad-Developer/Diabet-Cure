@@ -14,15 +14,14 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 // Middleware
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // for local development
-      "https://diabet-cure-c6tc1372m-durga-prasads-projects-8aa951c8.vercel.app", // your deployed frontend
-    ],
-    credentials: true, 
+    origin: "https://diabet-cure.vercel.app", // your frontend domain
+    credentials: true, // allow cookies
   })
 );
+
 
 app.use(cookieParser());
 app.use(express.json());
