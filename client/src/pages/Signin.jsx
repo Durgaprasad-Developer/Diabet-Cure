@@ -126,7 +126,7 @@ function Signin() {
 
             {/* Sign Up */}
             <p className="text-center text-sm text-gray-600 mt-4">
-              Already have an account?{" "}
+              Create a new Account?{" "}
               <Link
                 to="/signup"
                 className="text-cyan-600 font-medium hover:underline"
