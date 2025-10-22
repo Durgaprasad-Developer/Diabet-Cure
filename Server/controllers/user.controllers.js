@@ -68,14 +68,44 @@ export const getCurrentUser = async (req, res) => {
 // edit,update Profile
 
 export const editOrUpdateProfile = async (req, res) => {
-    try {
-        const data = req.body;
-        const user = await User.findById(req.userId).select("-password");
-        if (!user) return res.status(404).json({ message: "User not found" });
-        Object.assign(user, data);
-        res.status(201).json({ message: "updated profile", user });
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: "Server error" });
-    }
+  try {
+    const {
+      name,
+      email,
+      age,
+      gender,
+      weight,
+      diabetesType,
+      dibetesDuration,
+      medications,
+      activityLevel,
+      mealPattern,
+      healthConditions,
+    } = req.body;
+
+    const user = await User.findById(req.userId).select("-password");
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Update only allowed fields
+    if (name !== undefined) user.name = name;
+    if (email !== undefined) user.email = email;
+    if (age !== undefined) user.age = age;
+    if (gender !== undefined) user.gender = gender;
+    if (weight !== undefined) user.weight = weight;
+    if (diabetesType !== undefined) user.diabetesType = diabetesType;
+    if (dibetesDuration !== undefined) user.dibetesDuration = dibetesDuration;
+    if (medications !== undefined) user.medications = medications;
+    if (activityLevel !== undefined) user.activityLevel = activityLevel;
+    if (mealPattern !== undefined) user.mealPattern = mealPattern;
+    if (healthConditions !== undefined) user.healthConditions = healthConditions;
+
+    await user.save();
+
+    res.status(200).json({ message: "Profile updated", user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", });
+  }
 };
+
+

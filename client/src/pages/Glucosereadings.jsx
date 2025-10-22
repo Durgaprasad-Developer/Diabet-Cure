@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { addGlucose } from "../apicalls/glucoCalls";
 import { useNavigate } from "react-router-dom";
+import { fetchReport } from "../redux/reportSlice";
+import { useDispatch } from "react-redux";
 
 function Glucosereadings() {
   const [value, setValue] = useState("");
@@ -9,6 +11,7 @@ function Glucosereadings() {
   const [notes, setNotes] = useState("");
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -34,6 +37,7 @@ function Glucosereadings() {
 
     // Show success
     setSuccess(true);
+    dispatch(fetchReport())
     setTimeout(() => setSuccess(false), 2000);
   };
 

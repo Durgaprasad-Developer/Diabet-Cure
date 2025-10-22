@@ -51,3 +51,13 @@ export const getCurrentUser = async() => {
         throw err.response?.data || {message: "Unable to fetch the data"}
     }
 }
+
+export const putUser = async(data) => {
+    try{
+        const response = await api.put(`/api/user/profileupdate`,data);
+        console.log("put users", response.data);
+        return response.data
+    }catch(err){
+        throw err.response?.data || {message: "Unable to fetch the data"}
+    }
+}

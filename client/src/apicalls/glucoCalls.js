@@ -56,3 +56,13 @@ export const getGlucoseSummary = async() =>{
         console.error("get Glucose Summary error: ", err);
     }
 }
+
+export const getGlucoseAIReport = async()=>{
+    try{
+        const response = await api.get(`/api/glucose/aireport`);
+        console.log("get Glucose AI Report: ", response.data);
+        return response.data
+    }catch(err){
+        console.error("get Glucose AI report: ", err)
+    }
+}

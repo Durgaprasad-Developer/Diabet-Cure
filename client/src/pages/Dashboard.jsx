@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { User } from "lucide-react";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   BarChart, Bar,
@@ -104,11 +105,7 @@ export default function Dashboard() {
               <button className="p-2 sm:hidden bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
                 <Menu className="w-5 h-5" />
               </button>
-              <img
-                src="https://via.placeholder.com/40"
-                alt="profile"
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-blue-500 shadow-md ring-2 ring-blue-100"
-              />
+              <User size={26}  onClick={()=>navigate("/profile")} />
             </div>
           </div>
         </div>
@@ -304,7 +301,9 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
         >
-          <button className="w-full flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg active:scale-95 transition-all text-sm sm:text-base">
+          <button
+          onClick={()=> navigate("/aiReport")}
+           className="w-full flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-xl shadow-lg active:scale-95 transition-all text-sm sm:text-base">
             <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
             <span>Generate AI Report</span>
           </button>
