@@ -22,7 +22,7 @@ const Navbar = () => {
           </a>
           <a
             onClick={() => navigate("/signin")}
-            className="text-gray-600 hover:text-blue-600 transition duration-150 font-medium hidden sm:block cursor-pointer"
+            className="text-gray-600 hover:text-blue-600 transition duration-150 font-medium  sm:block cursor-pointer"
           >
             Sign In
           </a>
