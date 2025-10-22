@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+bro when I am refresing it goes to index so if there is token then it will direct to this page import { Routes, Route } from "react-router-dom";
 import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Signin from "./pages/Signin.jsx";
@@ -18,12 +18,8 @@ function App() {
   console.log("App.jsx", userData);
   return (
     <Routes>
-            <Route
-        path="/"
-        element={userData ? <Dashboard/> : <Navigate to="/landingpage" />}
-      />
       <Route
-        path="/dashboard"
+        path="/"
         element={userData ? <Dashboard /> : <Navigate to="/landingpage" />}
       />
       <Route
@@ -34,6 +30,10 @@ function App() {
       <Route
         path="/signin"
         element={!userData ? <Signin /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/landingpage"
+        element={!userData ? <Landingpage /> : <Navigate to="/" />}
       />
       <Route
         path="/forgot-password"
