@@ -1,8 +1,8 @@
-# Diabetic Cure WebApp 
+# Diabet Cure 
 
 ![Project Banner](./client/src/assets/mockups/landingPage.png)
 
-**Diabetic Cure** is a full-stack web application designed to help users monitor and manage their glucose levels efficiently. The platform provides personalized AI-generated reports, dashboards, and insights for better health management.  
+**Diabet Cure** is a full-stack web application designed to help users monitor and manage their glucose levels efficiently. The platform provides personalized AI-generated reports, dashboards, and insights for better health management.  
 
 ---
 
@@ -80,7 +80,7 @@ Follow these steps to run the project locally:
 1. **Clone the repository**
 ```bash
 git clone https://github.com/Durgaprasad-Developer/Diabet-Cure
-cd diabetic-cure
+cd diabet-cure
 ```
 
 2. **Install frontend dependencies**
