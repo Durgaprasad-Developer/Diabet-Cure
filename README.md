@@ -7,7 +7,7 @@
 ---
 
 ## Deployment and testing 
-**Deployed Line:** [Diabet Cured](https://diabet-cure.vercel.app/landingpage)
+**Deployed Line:** [Diabet Cure](https://diabet-cure.vercel.app/landingpage)
 
 **Testing Credentials**
 ```bash
@@ -45,12 +45,7 @@
 ### Landing Page
 ![Landing Page](./client/src/assets/mockups/landingPage.png)
 
-### Dashboard{
-  "name": "Durga Prasad",
-  "userName": "durga123",
-  "email": "durga@example.com",
-  "password": "StrongP@ssw0rd"
-}
+### Dashboard
 ![Dashboard](./client/src/assets/mockups/dashboard.png)
 
 ### Profile
