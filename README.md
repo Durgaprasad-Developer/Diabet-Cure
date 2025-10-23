@@ -7,7 +7,7 @@
 ---
 
 ## Deployment and testing 
-**Deployed Line:** [Diabet Cure](https://diabet-cure.vercel.app/landingpage)
+**Deployed Link:** [Diabet Cure](https://diabet-cure.vercel.app/landingpage)
 
 **Testing Credentials**
 ```bash
